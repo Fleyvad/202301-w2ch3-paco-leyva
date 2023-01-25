@@ -1,0 +1,124 @@
+/////////
+///CALCULADORA/PRO --- PACO LEYVA
+
+
+const numeros = [];
+
+const getnumbers = () => {
+
+    let numero;
+
+    do {
+        
+        numero = prompt(`Introduzca un número`);
+        if (numero === '' || Number.isNaN(+numero) || numero === '0') {
+            alert(`" ${numero} " no es un número correcto.`);
+        }else if(numero === null && numeros.length === 0 ) {
+            alert(`No has introducido el primer número`);
+           
+        }else if (numero === null) {
+            continue;
+        }else {
+            numeros.push(+numero);
+        }
+    } while (numeros.length === 0 ||numero !== null  )
+
+    return numeros;
+};
+
+
+
+
+function raizDeNumber1() {
+        
+            if(numeros.length === 1){
+            alert('Al introducir solo un número se ha activado el modo "RAIZ"');
+            return console.log(`La raiz de ${numeros} es ${Math.sqrt(numeros).toFixed(3)}`);
+        }else{
+       
+          }
+         }
+    
+    
+        
+
+function sum(numeros) {
+    let acc = 0;
+    for (let i = 0; i < numeros.length; i++) {
+
+        acc += numeros[i];
+    }
+    return acc;
+}
+
+function rest(numeros) {
+    let acc = 0;
+    for (let i = 0; i < numeros.length; i++) {
+
+        acc -= numeros[i];
+    }
+    return acc;
+}
+
+function mult(numeros) {
+    let acc = 1;
+    for (let i = 0; i < numeros.length; i++) {
+
+        acc *= numeros[i];
+    }
+    return acc;
+}
+
+function div(numeros) {
+    let acc = numeros[0];
+    for (let i = 1; i < numeros.length; i++) {
+
+        acc /= numeros[i];
+    }
+    return acc.toFixed(3);
+}
+
+
+function calculator() {
+   
+    if(numeros.length >= 2){
+    console.log(`Los números ${numeros.join(', ')} han sido evaludaos para las siquientes operaciones:`)
+    console.log(`Suma: ${sum(numeros)}`);
+    console.log(`Resta: ${rest(numeros)}`);
+    console.log(`Multiplicación: ${mult(numeros)}`);
+    console.log(`División: ${div(numeros)}`);
+  }else{
+    
+  }
+}
+
+/////////
+
+const calculatorPro = () => {
+    let option;
+    alert(`Hola, está usando CalculadoraPro`)
+    getnumbers();
+    raizDeNumber1();
+    console.log(calculator());
+
+do{
+    option = prompt(`¿Quiere realizar más operaciones? Sí: "Y" / No: "N"`);
+   
+
+    if (option === 'y' || option === 'Y' || option === ''){
+        numeros.splice(0);
+        getnumbers();
+        raizDeNumber1();
+        console.log(calculator());
+    }else if(option === 'n' || option === 'N' || option === null){
+        alert(`¡Hasta luego!`);
+        
+        continue;
+    }else{ 
+         alert(`" ${option} " no es una opción correcta.`);
+         numeros.splice(0);
+    }
+}while(option === null && !Number.isNaN(option) || option !== 'n' || option !== 'N' )
+};
+
+calculatorPro();
